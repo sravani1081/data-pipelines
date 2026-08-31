@@ -1,0 +1,92 @@
+// Enterprise Game Studio Presets & Domain Catalog Datasets
+
+import { Dataset, Schema } from '@/types';
+import { PRESET_PLAYERS } from './playerPresets';
+import { PRESET_SESSIONS } from './sessionPresets';
+import { PRESET_MATCHES } from './matchPresets';
+
+export const ENTERPRISE_SCHEMAS: Schema[] = [
+  {
+    id: 'sch_players_v1',
+    projectId: 'proj_telemetry',
+    name: 'Player Master Profile Schema',
+    version: 1,
+    compatibility: 'Compatible',
+    fields: [
+      { name: 'player_id', type: 'String', required: true, nullable: false, description: 'Unique player account UUID' },
+      { name: 'username', type: 'String', required: true, nullable: false, description: 'Display player tag' },
+      { name: 'country', type: 'String', required: true, nullable: false, description: 'Country ISO code' },
+      { name: 'platform', type: 'String', required: true, nullable: false, description: 'Gaming platform' },
+      { name: 'level', type: 'Integer', required: true, nullable: false, description: 'Player experience level' },
+      { name: 'vip_status', type: 'Boolean', required: true, nullable: false, description: 'VIP subscription status' },
+      { name: 'total_spend_usd', type: 'Float', required: true, nullable: false, description: 'Cumulative microtransaction revenue' },
+      { name: 'created_at', type: 'Datetime', required: true, nullable: false, description: 'Account creation timestamp' },
+    ],
+    createdAt: '2026-01-01T00:00:00Z',
+    updatedAt: '2026-08-31T12:00:00Z',
+    changeHistory: [],
+  },
+];
+
+export const ENTERPRISE_DATASETS: Dataset[] = [
+  {
+    id: 'ds_players',
+    projectId: 'proj_telemetry',
+    name: 'Player Master Profiles Catalog',
+    description: 'Player account master records with demographics, MMR, and total spend history',
+    ownerId: 'usr_data_eng_lead',
+    sizeBytes: 15420000,
+    recordCount: PRESET_PLAYERS.length,
+    columnCount: 9,
+    schemaId: 'sch_players_v1',
+    qualityScore: 99.4,
+    freshnessScore: 98.8,
+    status: 'Healthy',
+    domain: 'Players',
+    tags: ['Core', 'Gold', 'PII_Cleaned', 'Player'],
+    createdAt: '2026-01-01T00:00:00Z',
+    updatedAt: new Date().toISOString(),
+    lastRefreshedAt: new Date().toISOString(),
+    records: PRESET_PLAYERS as any,
+  },
+  {
+    id: 'ds_sessions',
+    projectId: 'proj_telemetry',
+    name: 'Player Gameplay Sessions Catalog',
+    description: 'Sessionization dataset tracking session duration, match count, and session spend',
+    ownerId: 'usr_data_eng_lead',
+    sizeBytes: 42800000,
+    recordCount: PRESET_SESSIONS.length,
+    columnCount: 9,
+    schemaId: 'sch_sessions_v1',
+    qualityScore: 98.9,
+    freshnessScore: 99.2,
+    status: 'Healthy',
+    domain: 'Gameplay',
+    tags: ['Silver', 'Sessions', 'Engagement'],
+    createdAt: '2026-01-05T00:00:00Z',
+    updatedAt: new Date().toISOString(),
+    lastRefreshedAt: new Date().toISOString(),
+    records: PRESET_SESSIONS as any,
+  },
+  {
+    id: 'ds_matches',
+    projectId: 'proj_telemetry',
+    name: 'Match Gameplay Summary Catalog',
+    description: 'Match statistics including mode, map, winning squad, duration, and leaderboard kills',
+    ownerId: 'usr_data_eng_lead',
+    sizeBytes: 68400000,
+    recordCount: PRESET_MATCHES.length,
+    columnCount: 7,
+    schemaId: 'sch_matches_v1',
+    qualityScore: 97.6,
+    freshnessScore: 96.5,
+    status: 'Healthy',
+    domain: 'Gameplay',
+    tags: ['Gold', 'Matches', 'Leaderboards'],
+    createdAt: '2026-01-10T00:00:00Z',
+    updatedAt: new Date().toISOString(),
+    lastRefreshedAt: new Date().toISOString(),
+    records: PRESET_MATCHES as any,
+  },
+];
