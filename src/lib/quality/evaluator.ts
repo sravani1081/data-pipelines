@@ -1,7 +1,7 @@
 // Data Quality Evaluator & Profiling Engine
 
-import { Dataset } from '@/types';
-import { DataQualityReport, QualityCheckResult, RejectedRecord } from '@/types/quality';
+import { Dataset } from '../../types';
+import { DataQualityReport, QualityCheckResult, RejectedRecord } from '../../types/quality';
 import { generateId } from '../utils/helpers';
 
 export interface DataProfile {

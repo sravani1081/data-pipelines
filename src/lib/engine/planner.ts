@@ -1,6 +1,6 @@
 // Topological DAG Planner & Execution Graph Generator
 
-import { PipelineNode, PipelineEdge } from '@/types/pipeline';
+import { PipelineNode, PipelineEdge } from '../../types/pipeline';
 
 export interface ExecutionPlan {
   isValid: boolean;
