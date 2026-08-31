@@ -1,6 +1,6 @@
 // Aggregate Node Executor (Count, Sum, Avg, Min, Max, P95)
 
-import { PipelineNode } from '@/types/pipeline';
+import { PipelineNode } from '../../../types/pipeline';
 
 export function executeAggregateNode(node: PipelineNode, records: Record<string, any>[]): Record<string, any>[] {
   const { groupBy = [], metrics = [] } = node.config;

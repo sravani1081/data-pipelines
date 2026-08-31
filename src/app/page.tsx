@@ -19,6 +19,14 @@ import { GeneratorView } from '@/components/telemetry/GeneratorView';
 import { StreamingSim } from '@/components/telemetry/StreamingSim';
 import { WorkspaceView } from '@/components/sql/WorkspaceView';
 import { FeatureWorkspace } from '@/components/ml/FeatureWorkspace';
+import { MonitoringView } from '@/components/observability/MonitoringView';
+import { LogExplorer } from '@/components/observability/LogExplorer';
+import { CostCalculator } from '@/components/observability/CostCalculator';
+import { TeamManager } from '@/components/teams/TeamManager';
+import { TaskBoard } from '@/components/teams/TaskBoard';
+import { AuditLogs } from '@/components/teams/AuditLogs';
+import { DocsViewer } from '@/components/docs/DocsViewer';
+import { SettingsView } from '@/components/settings/SettingsView';
 
 export default function Home() {
   const { activeView } = useNavigation();
@@ -35,6 +43,7 @@ export default function Home() {
         return <IngestionView />;
       case 'pipelines':
       case 'pipeline-builder':
+      case 'transformations':
         return <Canvas />;
       case 'pipeline-runs':
         return <RunsTable />;
@@ -59,6 +68,7 @@ export default function Home() {
         return <GeneratorView />;
       case 'streaming-simulation':
       case 'batch-processing':
+      case 'scheduling':
         return <StreamingSim />;
       case 'sql-workspace':
       case 'query-builder':
@@ -67,11 +77,29 @@ export default function Home() {
       case 'feature-engineering':
       case 'ml-datasets':
         return <FeatureWorkspace />;
+      case 'monitoring':
+      case 'alerts':
+        return <MonitoringView />;
+      case 'logs':
+        return <LogExplorer />;
+      case 'cost-simulation':
+        return <CostCalculator />;
+      case 'teams':
+        return <TeamManager />;
+      case 'tasks':
+        return <TaskBoard />;
+      case 'audit-logs':
+        return <AuditLogs />;
+      case 'documentation':
+        return <DocsViewer />;
+      case 'settings':
+      case 'exports-backup':
+        return <SettingsView />;
       default:
         return (
           <div className="p-8 text-center border border-slate-800 rounded-2xl bg-slate-900/60 max-w-xl mx-auto my-12">
             <h3 className="text-lg font-semibold text-slate-200 capitalize">
-              {activeView.replace(/-/g, ' ')} Module
+              {(activeView as string).replace(/-/g, ' ')} Module
             </h3>
             <p className="text-xs text-slate-400 mt-2">
               This module is managed by the GameOps AI data pipeline orchestration engine. Select another tab or use Cmd+K to navigate.

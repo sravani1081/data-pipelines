@@ -1,6 +1,6 @@
 // Safe Local In-Memory SQL Query Engine
 
-import { QueryAST, QueryExecutionResult } from '@/types/sql';
+import { QueryAST, QueryExecutionResult } from '../../types/sql';
 import { generateId } from '../utils/helpers';
 
 export function executeSQLQuery(sql: string, datasets: { name: string; records: Record<string, any>[] }[]): QueryExecutionResult {

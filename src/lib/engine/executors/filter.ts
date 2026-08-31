@@ -1,6 +1,6 @@
 // Filter Node Executor
 
-import { PipelineNode } from '@/types/pipeline';
+import { PipelineNode } from '../../../types/pipeline';
 
 export function executeFilterNode(node: PipelineNode, records: Record<string, any>[]): Record<string, any>[] {
   const { field, operator, value } = node.config;
