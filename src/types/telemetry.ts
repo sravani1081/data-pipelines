@@ -3,20 +3,28 @@
 export type GameEventType =
   | 'session_started'
   | 'session_ended'
-  | 'level_started'
-  | 'level_completed'
-  | 'player_death'
-  | 'quest_started'
-  | 'quest_completed'
-  | 'item_acquired'
-  | 'item_used'
   | 'match_started'
   | 'match_completed'
-  | 'npc_interaction'
+  | 'player_death'
+  | 'item_acquired'
+  | 'item_used'
   | 'purchase'
-  | 'achievement_unlocked'
+  | 'quest_started'
+  | 'quest_completed'
+  | 'level_up'
+  | 'currency_change'
   | 'server_connected'
-  | 'server_disconnected';
+  | 'server_disconnected'
+  | 'combat_action'
+  | 'player_movement_sample'
+  | 'currency_spent'
+  | 'battlepass_xp_gained'
+  | 'ai_npc_decision'
+  | 'client_crash_report'
+  | 'achievement_unlocked'
+  | 'npc_interaction'
+  | 'level_completed'
+  | 'level_started';
 
 export interface BaseGameEvent {
   event_id: string;
