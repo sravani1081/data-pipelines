@@ -10,6 +10,11 @@ import { IngestionView } from '@/components/sources/IngestionView';
 import { CatalogView } from '@/components/datasets/CatalogView';
 import { Canvas } from '@/components/builder/Canvas';
 import { RunsTable } from '@/components/runs/RunsTable';
+import { ExplorerView } from '@/components/datasets/ExplorerView';
+import { SchemaView } from '@/components/datasets/SchemaView';
+import { DataQualityView } from '@/components/datasets/DataQualityView';
+import { ContractsView } from '@/components/datasets/ContractsView';
+import { LineageGraph } from '@/components/lineage/LineageGraph';
 
 export default function Home() {
   const { activeView } = useNavigation();
@@ -32,6 +37,18 @@ export default function Home() {
       case 'datasets':
       case 'data-catalog':
         return <CatalogView />;
+      case 'data-explorer':
+        return <ExplorerView />;
+      case 'schemas':
+      case 'schema-registry':
+        return <SchemaView />;
+      case 'data-quality':
+      case 'data-validation':
+        return <DataQualityView />;
+      case 'data-contracts':
+        return <ContractsView />;
+      case 'data-lineage':
+        return <LineageGraph />;
       default:
         return (
           <div className="p-8 text-center border border-slate-800 rounded-2xl bg-slate-900/60 max-w-xl mx-auto my-12">
