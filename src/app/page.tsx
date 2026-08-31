@@ -15,6 +15,10 @@ import { SchemaView } from '@/components/datasets/SchemaView';
 import { DataQualityView } from '@/components/datasets/DataQualityView';
 import { ContractsView } from '@/components/datasets/ContractsView';
 import { LineageGraph } from '@/components/lineage/LineageGraph';
+import { GeneratorView } from '@/components/telemetry/GeneratorView';
+import { StreamingSim } from '@/components/telemetry/StreamingSim';
+import { WorkspaceView } from '@/components/sql/WorkspaceView';
+import { FeatureWorkspace } from '@/components/ml/FeatureWorkspace';
 
 export default function Home() {
   const { activeView } = useNavigation();
@@ -49,6 +53,20 @@ export default function Home() {
         return <ContractsView />;
       case 'data-lineage':
         return <LineageGraph />;
+      case 'game-events':
+      case 'telemetry':
+      case 'etl-elt':
+        return <GeneratorView />;
+      case 'streaming-simulation':
+      case 'batch-processing':
+        return <StreamingSim />;
+      case 'sql-workspace':
+      case 'query-builder':
+      case 'analytics':
+        return <WorkspaceView />;
+      case 'feature-engineering':
+      case 'ml-datasets':
+        return <FeatureWorkspace />;
       default:
         return (
           <div className="p-8 text-center border border-slate-800 rounded-2xl bg-slate-900/60 max-w-xl mx-auto my-12">
