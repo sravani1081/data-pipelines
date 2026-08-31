@@ -8,6 +8,8 @@ import { ProjectList } from '@/components/projects/ProjectList';
 import { SourceRegistry } from '@/components/sources/SourceRegistry';
 import { IngestionView } from '@/components/sources/IngestionView';
 import { CatalogView } from '@/components/datasets/CatalogView';
+import { Canvas } from '@/components/builder/Canvas';
+import { RunsTable } from '@/components/runs/RunsTable';
 
 export default function Home() {
   const { activeView } = useNavigation();
@@ -22,6 +24,11 @@ export default function Home() {
         return <SourceRegistry />;
       case 'ingestion':
         return <IngestionView />;
+      case 'pipelines':
+      case 'pipeline-builder':
+        return <Canvas />;
+      case 'pipeline-runs':
+        return <RunsTable />;
       case 'datasets':
       case 'data-catalog':
         return <CatalogView />;
